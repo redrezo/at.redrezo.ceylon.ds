@@ -1,6 +1,17 @@
-import at.redrezo.ceylon.ds { ServiceContext, ds, inject, service, component, activate }
-import ceylon.language.meta.declaration { Module }
-"Run the module `at.redrezo.celyon.ds`."
+import at.redrezo.ceylon.ds {
+	ServiceContext,
+	ds,
+	inject,
+	service,
+	component,
+	activate
+}
+
+import ceylon.language.meta.declaration {
+	Module
+}
+
+
 shared void run() {
 	
 	Module m = `module at.redrezo.ceylon.ds.examples`;
