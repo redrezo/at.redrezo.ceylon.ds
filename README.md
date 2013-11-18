@@ -1,5 +1,5 @@
-at.redrezo.ceylon.ds
-====================
+net.redrezo.ceylon.ds
+=====================
 
 declarative services runtime for ceylon
 
