@@ -22,7 +22,7 @@ if your module contains some service implementations
 
 To resolve a service simply call
 
-   MyServiceInterface service = ctx.resolveService<MyServiceInterface>();
+    MyServiceInterface service = ctx.resolveService<MyServiceInterface>();
    
 
 
