@@ -1,7 +1,25 @@
-import ceylon.language.meta.declaration { Module, InterfaceDeclaration, Package, ClassDeclaration, ValueDeclaration, OpenType, OpenInterfaceType, FunctionOrValueDeclaration, OpenIntersection, OpenUnion, TypeParameter }
-import ceylon.collection { MutableMap, HashMap, MutableList, LinkedList }
-import ceylon.language.meta.model { Interface, Type, ClassOrInterface, Class }
-import ceylon.language.meta { type }
+import ceylon.collection {
+	MutableMap,
+	HashMap,
+	MutableList,
+	LinkedList
+}
+import ceylon.language.meta.declaration {
+	Module,
+	InterfaceDeclaration,
+	Package,
+	ClassDeclaration,
+	ValueDeclaration,
+	OpenType,
+	OpenInterfaceType,
+	FunctionOrValueDeclaration,
+	OpenUnion
+}
+import ceylon.language.meta.model {
+	Interface,
+	Type,
+	Class
+}
 
 object serviceRegistry {
 	
@@ -51,21 +69,8 @@ object serviceRegistry {
 	
 }
 
-OpenInterfaceType convertToOpenInterfaceUnsafe(OpenType type) {
-	if(is OpenInterfaceType type) {
-		return type;
-	}
-	throw;
-}
-
 class ServiceDefinition({InterfaceDeclaration*} provides, ClassDeclaration clazz) {
 	// filter and store all satisfied types
-//	shared {OpenInterfaceType*} satisfiedProvides = provides
-//			.map((InterfaceDeclaration elem) => elem.openType)
-//			// TODO find a better way for type conversion
-//			.map<OpenInterfaceType>(convertToOpenInterfaceUnsafe)
-//			.filter((OpenInterfaceType elem) => clazz.satisfiedTypes.contains(elem));
-	
 	shared {OpenInterfaceType*} satisfiedProvides = { for (elem in provides.map((InterfaceDeclaration elem) => elem.openType)) 
 		if (is OpenInterfaceType elem) 
 		if (clazz.satisfiedTypes.contains(elem)) elem 
@@ -126,10 +131,10 @@ class ServiceDefinition({InterfaceDeclaration*} provides, ClassDeclaration clazz
 			return clazz.instantiate();
 		}
 		else {
-			{OpenInterfaceType*} types = clazz.parameterDeclarations
-				.map((FunctionOrValueDeclaration elem) => elem.openType)
-				.filter((OpenType elem) => elem is OpenInterfaceType)
-				.map<OpenInterfaceType>(convertToOpenInterfaceUnsafe);
+			{OpenInterfaceType*} types ={ for (elem in clazz.parameterDeclarations
+				.map((FunctionOrValueDeclaration elem) => elem.openType))
+				if (is OpenInterfaceType elem) elem
+			};
 			
 			value args = types.map<Anything>((OpenInterfaceType elem) => lookup(elem));
 			
