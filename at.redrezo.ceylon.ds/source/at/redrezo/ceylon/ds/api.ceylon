@@ -5,11 +5,14 @@ import ceylon.language.meta.declaration {
 	ClassDeclaration,
 	ValueDeclaration
 }
+import at.redrezo.ceylon.ds.impl { DSImpl }
 
 shared interface DS {
 	"returns the `ServiceContext` for a Module"
 	shared formal ServiceContext getContext(Module m);
 }
+
+shared object ds extends DSImpl() {}
 
 shared interface ServiceContext {
 	"returns the `Module` associated with this `ServiceContext`"

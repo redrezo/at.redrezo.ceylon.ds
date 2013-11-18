@@ -1,3 +1,11 @@
+import at.redrezo.ceylon.ds {
+	ServiceAnnotation,
+	ServiceContext,
+	InjectAnnotation,
+	DS,
+	ComponentAnnotation
+}
+
 import ceylon.collection {
 	MutableMap,
 	HashMap,
@@ -207,7 +215,7 @@ class ServiceDefinition({InterfaceDeclaration*} provides, ClassDeclaration clazz
 }
 
 
-shared object ds satisfies DS {
+shared class DSImpl() satisfies DS {
 	MutableMap<Module, ServiceContext> contexts = HashMap<Module, ServiceContext>();
 
 	shared actual ServiceContext getContext(Module m) {
