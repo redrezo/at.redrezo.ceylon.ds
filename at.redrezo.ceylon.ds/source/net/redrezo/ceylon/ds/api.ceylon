@@ -5,7 +5,7 @@ import ceylon.language.meta.declaration {
 	ClassDeclaration,
 	ValueDeclaration
 }
-import at.redrezo.ceylon.ds.impl { DSImpl }
+import net.redrezo.ceylon.ds.impl { DSImpl }
 
 shared interface DS {
 	"returns the `ServiceContext` for a Module"

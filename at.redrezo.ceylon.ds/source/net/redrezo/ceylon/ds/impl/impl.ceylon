@@ -1,4 +1,4 @@
-import at.redrezo.ceylon.ds {
+import net.redrezo.ceylon.ds {
 	ServiceAnnotation,
 	ServiceContext,
 	InjectAnnotation,

@@ -1,4 +1,4 @@
-import at.redrezo.ceylon.ds {
+import net.redrezo.ceylon.ds {
 	ServiceContext,
 	ds,
 	inject,
@@ -14,7 +14,7 @@ import ceylon.language.meta.declaration {
 
 shared void run() {
 	
-	Module m = `module at.redrezo.ceylon.ds.examples`;
+	Module m = `module net.redrezo.ceylon.ds.examples`;
 	
 	ServiceContext ctx = ds.getContext(m);
 	
